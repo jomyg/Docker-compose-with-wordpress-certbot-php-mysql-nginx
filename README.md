@@ -270,6 +270,7 @@ docker-compose stop webserver
 ```
 curl -sSLo nginx-conf/options-ssl-nginx.conf https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf
 ```
+```
 -rw-r--r-- 1 root root 2219 Feb 19 10:40 nginx.conf
 -rw-r--r-- 1 root root  721 Feb 19 10:38 options-ssl-nginx.conf
  nginx-conf]# cat options-ssl-nginx.conf
@@ -283,8 +284,10 @@ ssl_prefer_server_ciphers off;
 
 ssl_ciphers "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
  nginx-conf]#
- 
- > Now we can chnage the conf file by including the SSL and 443 setup, nano nginx-conf/nginx.conf
+ ```
+
+> Now we can chnage the conf file by including the SSL and 443 setup, nano nginx-conf/nginx.conf
+
 ```sh
 server {
         listen 80;
@@ -381,6 +384,8 @@ server {
 ```
   docker-compose up -d --force-recreate --no-deps webserver
 ```
+> We can view the containers
+```
 nginx-conf]# docker container ls
 CONTAINER ID   IMAGE                        COMMAND                  CREATED       STATUS       PORTS                                                                      NAMES
 ba820b1c1e55   nginx:1.15.12-alpine         "nginx -g 'daemon of…"   3 hours ago   Up 3 hours   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   webserver
@@ -395,10 +400,13 @@ ba820b1c1e55   nginx:1.15.12-alpine         "nginx -g 'daemon of…"   3 hours a
 a172d98625bf   wordpress:5.1.1-fpm-alpine   "docker-entrypoint.s…"   3 hours ago   Up 3 hours               9000/tcp                                                                   wordpress
 755210077c68   mysql:8.0                    "docker-entrypoint.s…"   3 hours ago   Up 3 hours               3306/tcp, 33060/tcp                                                        db
 nginx-conf]#
+```
+> With our containers running, we can finish the installation through the WordPress web interface by calling our domain Name. I have completed all setup and i have attached some snapshots to view
 
-> With our containers running, we can finish the installation through the WordPress web interface.
 
+<center><img alt="wordpresssite" src="firefox_UHJzeUqSho.png"> </img></center>
 
+<center><img alt="ssl-cert" src="firefox_rqAWtRcnMj.png"> </img></center>
 
  ## Conclusion
 
