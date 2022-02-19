@@ -1,4 +1,4 @@
-# -Docker-compose-with-wordpress-certbot-php-mysql-nginx
+# Docker-compose-with-wordpress-certbot-php-mysql-nginx
 
 [![Build](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
